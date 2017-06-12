@@ -1,4 +1,4 @@
-function selectBirthday(yearSelector, monthSelector, daySelector, config) {
+export function selectBirthday(yearSelector, monthSelector, daySelector, config) {
     if (config == undefined) {
         config = {};
     }
