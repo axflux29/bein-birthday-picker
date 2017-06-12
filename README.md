@@ -1,2 +1,2 @@
-# bein-input-counter
-jQuery character counter and countdown for inputs and textareas.
+# bein-birthday-picker
+jQuery birthday picker for select boxes.
