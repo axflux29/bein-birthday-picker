@@ -1,0 +1,22 @@
+{
+  "name": "bein-birthday-picker",
+  "version": "1.0.0",
+  "description": "jQuery birthday picker for select boxes.",
+  "main": "bein-birthday-picker.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beindigital/bein-birthday-picker.git"
+  },
+  "keywords": [
+    "jquery",
+    "birthday",
+    "picker",
+    "selectbox"
+  ],
+  "author": "Bein Digital",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beindigital/bein-birthday-picker/issues"
+  },
+  "homepage": "https://github.com/beindigital/bein-birthday-picker"
+}
