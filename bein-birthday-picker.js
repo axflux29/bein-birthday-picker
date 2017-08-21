@@ -1,7 +1,9 @@
-export function selectBirthday(yearSelector = null, monthSelector = null, daySelector = null, config = null) {
-    if (config === null) {
-        config = {};
-    }
+export function selectBirthday(yearSelector, monthSelector, daySelector, config) {
+
+    yearSelector = yearSelector || null;
+    monthSelector = monthSelector || null;
+    daySelector = daySelector || null;
+    config = config || {};
 
     const months = [
         "null",
@@ -82,48 +84,48 @@ export function selectBirthday(yearSelector = null, monthSelector = null, daySel
     let day29 = birthdayDay.find('option[value="29"]');
     let day30 = birthdayDay.find('option[value="30"]');
     let day31 = birthdayDay.find('option[value="31"]');
-}
 
-function onBirthdayChanged() {
-    let year = parseInt(birthdayYear.val());
-    let month = parseInt(birthdayMonth.val());
-    let day = parseInt(birthdayDay.val());
+    function onBirthdayChanged() {
+        let year = parseInt(birthdayYear.val());
+        let month = parseInt(birthdayMonth.val());
+        let day = parseInt(birthdayDay.val());
 
-    switch (month) {
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            if (day > 30) {
-                birthdayDay.val(30);
-            }
-            day29.show();
-            day30.show();
-            day31.hide();
-            break;
-        case 2:
-            if (!isLeapYear(year)) {
-                if (day > 28) {
-                    birthdayDay.val(28);
-                }
-                day29.hide();
-            } else {
-                if (day > 29) {
-                    birthdayDay.val(29);
+        switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (day > 30) {
+                    birthdayDay.val(30);
                 }
                 day29.show();
-            }
-            day30.hide();
-            day31.hide();
-            break;
-        default:
-            day29.show();
-            day30.show();
-            day31.show();
-            break;
+                day30.show();
+                day31.hide();
+                break;
+            case 2:
+                if (!isLeapYear(year)) {
+                    if (day > 28) {
+                        birthdayDay.val(28);
+                    }
+                    day29.hide();
+                } else {
+                    if (day > 29) {
+                        birthdayDay.val(29);
+                    }
+                    day29.show();
+                }
+                day30.hide();
+                day31.hide();
+                break;
+            default:
+                day29.show();
+                day30.show();
+                day31.show();
+                break;
+        }
     }
-}
 
-function isLeapYear(year) {
-    return 0 === year % 4 && (year % 100 !== 0 || year % 400 === 0);
+    function isLeapYear(year) {
+        return 0 === year % 4 && (year % 100 !== 0 || year % 400 === 0);
+    }
 }
