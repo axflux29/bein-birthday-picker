@@ -1,17 +1,25 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.selectBirthday = selectBirthday;
-function selectBirthday(yearSelector, monthSelector, daySelector, config) {
+export function selectBirthday(yearSelector, monthSelector, daySelector, config) {
 
     yearSelector = yearSelector || null;
     monthSelector = monthSelector || null;
     daySelector = daySelector || null;
     config = config || {};
 
-    var months = ["null", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    const months = [
+        "null",
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Ağustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık"
+    ];
 
     if (config.year === null) {
         config.year = 0;
@@ -33,11 +41,11 @@ function selectBirthday(yearSelector, monthSelector, daySelector, config) {
         config.endYear = new Date().getFullYear();
     }
 
-    var birthdayYear = $(yearSelector);
+    let birthdayYear = $(yearSelector);
     if (birthdayYear.length === 0) {
         throw "can not find 'year' select control";
     }
-    for (var y = config.endYear; y > config.endYear - config.yearRange; y--) {
+    for (let y = config.endYear; y > config.endYear - config.yearRange; y--) {
         if (y === config.year) {
             $('<option value="' + y + '" selected="selected">' + y + '</option>').appendTo(birthdayYear);
         } else {
@@ -45,11 +53,11 @@ function selectBirthday(yearSelector, monthSelector, daySelector, config) {
         }
     }
 
-    var birthdayMonth = $(monthSelector);
+    let birthdayMonth = $(monthSelector);
     if (birthdayMonth.length === 0) {
         throw "can not find 'month' select control";
     }
-    for (var m = 1; m <= 12; m++) {
+    for (let m = 1; m <= 12; m++) {
         if (m === config.month) {
             $('<option value="' + m + '" selected="selected">' + months[m] + '</option>').appendTo(birthdayMonth);
         } else {
@@ -57,11 +65,11 @@ function selectBirthday(yearSelector, monthSelector, daySelector, config) {
         }
     }
 
-    var birthdayDay = $(daySelector);
+    let birthdayDay = $(daySelector);
     if (birthdayDay.length === 0) {
         throw "can not find 'day' select control";
     }
-    for (var d = 1; d <= 31; d++) {
+    for (let d = 1; d <= 31; d++) {
         if (d === config.day) {
             $('<option value="' + d + '" selected="selected">' + d + '</option>').appendTo(birthdayDay);
         } else {
@@ -73,14 +81,14 @@ function selectBirthday(yearSelector, monthSelector, daySelector, config) {
     birthdayMonth.change(onBirthdayChanged);
     birthdayDay.change(onBirthdayChanged);
 
-    var day29 = birthdayDay.find('option[value="29"]');
-    var day30 = birthdayDay.find('option[value="30"]');
-    var day31 = birthdayDay.find('option[value="31"]');
+    let day29 = birthdayDay.find('option[value="29"]');
+    let day30 = birthdayDay.find('option[value="30"]');
+    let day31 = birthdayDay.find('option[value="31"]');
 
     function onBirthdayChanged() {
-        var year = parseInt(birthdayYear.val());
-        var month = parseInt(birthdayMonth.val());
-        var day = parseInt(birthdayDay.val());
+        let year = parseInt(birthdayYear.val());
+        let month = parseInt(birthdayMonth.val());
+        let day = parseInt(birthdayDay.val());
 
         switch (month) {
             case 4:
